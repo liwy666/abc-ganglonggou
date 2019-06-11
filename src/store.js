@@ -24,8 +24,8 @@ let store = new Vuex.Store({
     state: {
         user_token: user_token_,//用户token
         into_type: "abc"//入口方式
-        // ,api_url:"https://api.ganglonggou.com"
-        , api_url: "https://test-api.ganglonggou.com"
+        , api_url: "https://api.ganglonggou.com"
+        //, api_url: "https://test-api.ganglonggou.com"
         , parent_id: 203//主类
         , goods_list: []//商品列表
         , goods_info: {
@@ -46,9 +46,9 @@ let store = new Vuex.Store({
             sku_id: 0,//所选属性id
             attr_desc: '',//所选属性详情
             is_promote: 0,//是否秒杀商品
-            promote_number:0,
-            promote_start_date:0,
-            promote_end_date:0,
+            promote_number: 0,
+            promote_start_date: 0,
+            promote_end_date: 0,
             give_integral: 0,//返积分
             integral: 0,//用积分
             one_give_integral: 0,//返积分
@@ -130,9 +130,9 @@ let store = new Vuex.Store({
                 sku_id: 0,//所选属性id
                 attr_desc: '',//所选属性详情
                 is_promote: 0,//是否秒杀商品
-                promote_number:0,
-                promote_start_date:0,
-                promote_end_date:0,
+                promote_number: 0,
+                promote_start_date: 0,
+                promote_end_date: 0,
                 give_integral: 0,//返积分
                 integral: 0,//用积分
                 one_give_integral: 0,//返积分
@@ -630,13 +630,13 @@ let store = new Vuex.Store({
          * @param context
          * @param user_token
          */
-        , getGoodsList(context, index_type) {
+        , getGoodsList(context, into_type) {
             let toast1 = Toast.loading({
                 mask: true,
                 message: '获取商品列表',
                 duration: 0
             });
-            fetch('get_goods_list', {index_type: index_type})
+            fetch('user_get_goods_list', {into_type: into_type})
                 .then((msg) => {
                     if (msg) {
                         Vue.set(context.state, 'goods_list', msg);
