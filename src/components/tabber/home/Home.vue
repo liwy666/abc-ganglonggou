@@ -24,7 +24,6 @@
 		</div>
 	</div>
 </template>
-
 <script>
     import orderOption from './sub/my-home-order-option';
 
@@ -49,17 +48,41 @@
                 /*获取订单信息*/
                 this.$store.dispatch("getOrderList", this.$store.getters.getUserToken);
             }
-            //this.t();
+            this.abcPayQuery();
         },
         activated() {
 
         },
         methods: {
-            t() {
-                setInterval(() => {
-                    this.$store.dispatch("getOrderList", this.$store.getters.getUserToken);
-                    this.$store.dispatch("getUserInfo", this.$store.getters.getUserToken);
-                }, 100)
+            abcPayQuery() {
+                let order_sn = this.$route.query.order_sn;
+                let query_payment = this.$route.query.query_payment;
+                if (query_payment === 'yes' && typeof (order_sn) !== 'undefined') {
+                    let toast1 = this.$toast.loading({
+                        mask: true,
+                        message: '查询支付中...',
+                        duration: 0
+                    });
+                    this.$fetch('user_query_order_payment', {order_sn: order_sn})
+                        .then((msg) => {
+                            if (msg) {
+                                toast1.clear();
+                                this.$toast.success('我们已收到您的新订单，将很快为您安排发货！');
+                                setTimeout(() => {
+                                    /*获取订单信息*/
+                                    this.$store.dispatch("getOrderList", this.$store.getters.getUserToken);
+                                    this.$router.push('/home');
+                                }, 1500)
+                            } else {
+                                toast1.clear();
+                                this.$toast.fail('订单查询失败，请与我们联系！');
+                                setTimeout(() => {
+                                    this.$router.push('/home');
+                                }, 1500)
+                            }
+
+                        })
+                }
             }
         },
         components: {
@@ -67,7 +90,6 @@
         },
     };
 </script>
-
 <style lang="scss" scoped>
 	.main {
 		.home-head {

@@ -10,8 +10,8 @@
 		</van-swipe>
 		<div class="my-tab-box">
 			<div class="my-tab" v-for="(item,i) in get_info.cat_list" :key="item.cat_id"
-				 @click="cat_index = i"
-				 :class="[i === cat_index ? 'xz':'']">
+				@click="cat_index = i"
+				:class="[i === cat_index ? 'xz':'']">
 				{{item.cat_name}}
 			</div>
 		</div>
@@ -19,12 +19,11 @@
 			<oneGoods v-for="(item) in goods_list" :key="item.goods_id" :goods_info_="item"></oneGoods>
 		</transition-group>
 		<!--压屏广告-->
-		<md-landscape v-model="showPic">
+		<md-landscape v-model="show_pic">
 			<img :src="pop_img_url">
 		</md-landscape>
 	</div>
 </template>
-
 <script>
     import mySearch from "./sub/my-sub-search.vue";//搜索组件
     import oneGoods from "../../sub/my-one-goods";//搜索组件
@@ -38,7 +37,7 @@
                 },
                 radio: "1",
                 cat_index: 0,
-                showPic: false,
+                show_pic: false,
             };
         },
         created() {
@@ -108,10 +107,18 @@
                     if (msg) {
                         this.get_info = msg;
                         this.$set(this.$store.state, 'goods_list', msg.goods_list);//赋值商品列表
-                        this.showPic = true;
+                        this.showPic();
                     }
 
                 })
+            },
+
+            showPic() {
+                let time = localStorage.getItem('glShowPicTime') || 0;
+                if (time < parseInt(new Date().getTime())) {
+                    localStorage.setItem('glShowPicTime', parseInt(new Date().getTime()) + 86400000);
+                    this.show_pic = true;
+                }
             },
             toControl(ad_info) {
                 if (ad_info.ad_type === "商品ID") {
@@ -170,7 +177,6 @@
         },
     };
 </script>
-
 <style lang="scss" scoped>
 	.van-swipe {
 		img {
@@ -383,14 +389,13 @@
 			background-color: white;
 		}
 	}
-
-
 </style>
 <style lang="scss">
 	.md-landscape-content {
 		width: 375px;
 		text-align: center;
-		img{
+
+		img {
 			width: 80%;
 		}
 	}

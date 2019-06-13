@@ -12,8 +12,8 @@
         },
         methods: {
             Login() {
-                this.testLogin();
-                //this.abcLogin();
+                //this.testLogin();
+                this.abcLogin();
             },
             /*登录方法合集*/
             abcLogin() {
@@ -47,8 +47,8 @@
             abcAppLogin() {
                 let abc_app_appid = this.GetQueryString('appid');
                 let id = this.GetQueryString('id');
-                abc_app_appid = '1CIOOHCD70050101007F00000910CACD';
-                id = 'fc196654571f8ba9a893350cbc40a59fceb615257d436a67';
+                //abc_app_appid = '1CIOOHCD70050101007F00000910CACD';
+                //id = 'fc196654571f8ba9a893350cbc40a59fceb615257d436a67';
                 this.$toast.loading({
                     mask: true,
                     message: '登录中....',
