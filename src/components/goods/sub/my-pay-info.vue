@@ -12,7 +12,6 @@
 		</div>
 	</div>
 </template>
-
 <script>
     export default {
         data() {
@@ -40,7 +39,7 @@
             }
         },
         created() {
-			this.updPayInfo(this.$store.state.goods_info.goods_price)
+            this.updPayInfo(this.$store.state.goods_info.goods_price)
         },
         methods: {
             updPayInfo(newVal) {
@@ -77,16 +76,17 @@
         },
     };
 </script>
-
 <style lang="scss" scoped>
 	.pay-info-box {
 		margin-top: 5px;
 		height: 70px;
 		width: 95%;
 		margin-left: 2%;
+
 		.swiper-container {
 			z-index: 0 !important;
 		}
+
 		.pay-info-one {
 			overflow: hidden;
 			margin-top: 5px;
@@ -96,6 +96,7 @@
 			background-color: white;
 			border-radius: 5px;
 			box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.3);
+
 			.pay-info-one-t {
 				width: 100%;
 				height: 30px;

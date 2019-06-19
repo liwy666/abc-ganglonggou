@@ -8,12 +8,11 @@
 		<transition name="name2">
 			<router-view class="router-view" v-if="!$route.meta.keepAlive"></router-view>
 		</transition>
-
 		<div class="support"></div>
 		<van-tabbar v-model="active" :fixed="fixed" :active-color="$MyCommon.$main_color0">
 			<van-tabbar-item icon="shop-collect" to="first">首页</van-tabbar-item>
 			<van-tabbar-item icon="service"
-							 :to="{path:'myIframe',query:{src:'https://p.qiao.baidu.com/cps2/mobileChat?siteId=11040705&userId=24298402&type=1&reqParam=&appId=&referer='}}">
+				:to="{path:'myIframe',query:{src:'https://p.qiao.baidu.com/cps2/mobileChat?siteId=11040705&userId=24298402&type=1&reqParam=&appId=&referer='}}">
 				客服
 			</van-tabbar-item>
 			<van-tabbar-item icon="underway" dot to="spike">秒杀</van-tabbar-item>
@@ -22,11 +21,8 @@
 			<van-tabbar-item icon="manager" to="home">个人中心</van-tabbar-item>
 		</van-tabbar>
 	</div>
-
 </template>
-
 <script>
-
     import {commonShare} from "../../share";
 
     export default {
@@ -74,7 +70,6 @@
         methods: {},
     };
 </script>
-
 <style lang="scss" scoped>
 	.van-tabbar--fixed {
 		position: fixed !important;
@@ -115,6 +110,6 @@
 	}
 
 	.support {
-		height: 80px;
+		height: 0px;
 	}
 </style>

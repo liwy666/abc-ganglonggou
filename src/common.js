@@ -140,4 +140,19 @@ export default {
         return result;
     },
 
+    /**
+     * 剔除一维数组重复项
+     * @param array
+     * @returns {Array}
+     */
+    unique1(array) {
+        let r = [];
+        for (let i = 0, l = array.length; i < l; i++) {
+            for (let j = i + 1; j < l; j++)
+                if (array[i] == array[j]) j == ++i;
+            r.push(array[i]);
+        }
+        return r;
+    }
+
 }
