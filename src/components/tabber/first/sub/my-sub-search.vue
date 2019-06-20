@@ -21,7 +21,7 @@
 
         },
         mounted() {
-            window.addEventListener('scroll', this.handleScroll);
+            //window.addEventListener('scroll', this.handleScroll);
         },
         methods: {
             onSearch() {
@@ -40,11 +40,14 @@
 </script>
 <style lang="scss" scoped>
 	.van-search {
-		background-color: rgba(0,0,0,0) !important;
+		background-color: rgba(49, 156, 140) !important;
 		width: 100%;
 		top: 0;
 		position: fixed;
 		z-index: 999;
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0);
+	}
+	.support{
+		height: 50px;
 	}
 </style>

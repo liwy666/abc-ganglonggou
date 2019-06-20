@@ -25,7 +25,7 @@ let store = new Vuex.Store({
         user_token: user_token_,//用户token
         into_type: "abc"//入口方式
         , api_url: "https://api.ganglonggou.com"
-       // , api_url: "https://test-api.ganglonggou.com"
+       //, api_url: "https://test-api.ganglonggou.com"
         , parent_id: 203//主类
         , goods_list: []//商品列表
         , goods_info: {
